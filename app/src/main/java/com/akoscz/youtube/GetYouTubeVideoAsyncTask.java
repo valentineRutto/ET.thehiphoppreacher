@@ -32,7 +32,7 @@ public abstract class GetYouTubeVideoAsyncTask extends AsyncTask<Playlist.Page, 
     private static final String TAG = "GetYouTubeVideoDurationAsyncTask";
 
     //see: https://developers.google.com/youtube/v3/docs/videos/list
-    private static final String YOUTUBE_VIDEOS_URL = "https://www.example.akoscz.com/watch?v=VP8W_-4zCWc&list=PLty8xV3EJYSe5Jqym-_rZtsFvNzXi9AB7";
+    private static final String YOUTUBE_VIDEOS_URL = "https://www.youtube.com/watch?v=VP8W_-4zCWc&list=PLty8xV3EJYSe5Jqym-_rZtsFvNzXi9AB7";
     private static final String YOUTUBE_VIDEOS_PART = "contentDetails,statistics"; // video resource properties that the response will include.
     private static final String YOUTUBE_VIDEOS_FIELDS = "items(contentDetails/duration,id,statistics)"; // selector specifying which fields to include in a partial response.
 
