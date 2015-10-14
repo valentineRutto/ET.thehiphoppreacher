@@ -21,11 +21,14 @@ import android.view.MenuItem;
  * limitations under the License.
  */
 public class YouTubeActivity extends ActionBarActivity {
+
+
     private static final String YOUTUBE_PLAYLIST = "PLty8xV3EJYSe5Jqym-_rZtsFvNzXi9AB7";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(com.akoscz.youtube.R.layout.youtube_activity);
 
         if (ApiKey.YOUTUBE_API_KEY.startsWith("YOUR_API_KEY")) {
