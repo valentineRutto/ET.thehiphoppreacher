@@ -7,6 +7,7 @@
     <string name="title_activity_twitter">Twitter</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="twitter_search">#youoweyou</string>
     <string name="action_settings">Settings</string>
 
 </resources>

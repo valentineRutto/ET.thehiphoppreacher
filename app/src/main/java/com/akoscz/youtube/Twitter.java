@@ -4,14 +4,35 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import com.twitter.sdk.android.tweetui.SearchTimeline;
+import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 
 public class Twitter extends ActionBarActivity {
+    String SEARCH_QUERY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_twitter);
+        SEARCH_QUERY = getResources().getString(R.string.twitter_search);
+        setUpTimeline();
+
+
     }
+    private void setUpTimeline() {
+
+        SearchTimeline searchTimeline = new SearchTimeline.Builder().query(SEARCH_QUERY).build();
+
+        final TweetTimelineListAdapter timelineAdapter = new TweetTimelineListAdapter(this, searchTimeline);
+
+        ListView timelineView = (ListView) findViewById(android.R.id.list);
+        timelineView.setEmptyView(findViewById(R.id.empty_timeline));
+        timelineView.setAdapter(timelineAdapter);
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
