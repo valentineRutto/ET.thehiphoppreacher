@@ -3,6 +3,7 @@ package com.akoscz.youtube;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.appcompat.BuildConfig;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -20,23 +21,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * <p/>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p/>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * <p/>
- * <p/>
- * YouTubeRecyclerViewFragment contains a RecyclerView that shows a list of YouTube video cards.
- * <p/>
- */
 public class YouTubeRecyclerViewFragment extends Fragment {
     // the fragment initialization parameter
     private static final String ARG_YOUTUBE_PLAYLIST_ID = "YOUTUBE_PLAYLIST_ID";
@@ -89,17 +73,18 @@ public class YouTubeRecyclerViewFragment extends Fragment {
         Picasso.with(getActivity()).setIndicatorsEnabled(BuildConfig.DEBUG);
 
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.youtube_recycler_view_fragment, container, false);
+        View rootView = inflater.inflate(com.akoscz.youtube.R.layout.youtube_recycler_view_fragment, container, false);
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.youtube_recycler_view);
+        mRecyclerView = (RecyclerView) rootView.findViewById(com.akoscz.youtube.R.id.youtube_recycler_view);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
 
         Resources resources = getResources();
-        if (resources.getBoolean(R.bool.isTablet)) {
+        if (resources.getBoolean(com.akoscz.youtube.R.bool.isTablet)) {
             // use a staggered grid layout if we're on a large screen device
-            mLayoutManager = new StaggeredGridLayoutManager(resources.getInteger(R.integer.columns), StaggeredGridLayoutManager.VERTICAL);
+            mLayoutManager = new StaggeredGridLayoutManager(resources.getInteger(com.akoscz.youtube.R.integer.columns),
+                    StaggeredGridLayoutManager.VERTICAL);
         } else {
             // use a linear layout on phone devices
             mLayoutManager = new LinearLayoutManager(getActivity());
@@ -116,7 +101,8 @@ public class YouTubeRecyclerViewFragment extends Fragment {
 
         // restore the playlist after an orientation change
         if (savedInstanceState != null) {
-            mPlaylist = new Gson().fromJson(savedInstanceState.getString(KEY_SAVED_INSTANCE_PLAYLIST), Playlist.class);
+            mPlaylist = new Gson().fromJson(savedInstanceState.getString(KEY_SAVED_INSTANCE_PLAYLIST),
+                    Playlist.class);
         }
 
         // if we have a saved playlist, ensure the adapter is initialized

@@ -4,5 +4,9 @@
     <string name="app_name">YouTubePlaylist</string>
     <string name="action_list_view">ListView</string>
     <string name="action_recycler_view">RecyclerView</string>
+    <string name="title_activity_twitter">Twitter</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

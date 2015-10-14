@@ -14,6 +14,6 @@ package com.akoscz.youtube;
  * limitations under the License.
  */
 public class ApiKey {
-    public static final String YOUTUBE_API_KEY = "YOUR_API_KEY";
+    public static final String YOUTUBE_API_KEY = "AIzaSyAhn3ZDjIR9GwK4xftNb_6tYCK-kCgIE7s";
 
 }

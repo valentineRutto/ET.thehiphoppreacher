@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.akoscz.youtube.model.Playlist;
 import com.akoscz.youtube.model.PlaylistItem;
-import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 
@@ -52,14 +52,14 @@ public class PlaylistCardAdapter extends RecyclerView.Adapter<PlaylistCardAdapte
             super(v);
             mContext = v.getContext();
             mTitleText = (TextView) v.findViewById(R.id.video_title);
-            mDescriptionText = (TextView) v.findViewById(R.id.video_description);
-            mThumbnailImage = (ImageView) v.findViewById(R.id.video_thumbnail);
-            mShareIcon = (ImageView) v.findViewById(R.id.video_share);
-            mShareText = (TextView) v.findViewById(R.id.video_share_text);
-            mDurationText = (TextView) v.findViewById(R.id.video_dutation_text);
-            mViewCountText= (TextView) v.findViewById(R.id.video_view_count);
-            mLikeCountText = (TextView) v.findViewById(R.id.video_like_count);
-            mDislikeCountText = (TextView) v.findViewById(R.id.video_dislike_count);
+            mDescriptionText = (TextView) v.findViewById(com.akoscz.youtube.R.id.video_description);
+            mThumbnailImage = (ImageView) v.findViewById(com.akoscz.youtube.R.id.video_thumbnail);
+            mShareIcon = (ImageView) v.findViewById(com.akoscz.youtube.R.id.video_share);
+            mShareText = (TextView) v.findViewById(com.akoscz.youtube.R.id.video_share_text);
+            mDurationText = (TextView) v.findViewById(com.akoscz.youtube.R.id.video_dutation_text);
+            mViewCountText= (TextView) v.findViewById(com.akoscz.youtube.R.id.video_view_count);
+            mLikeCountText = (TextView) v.findViewById(com.akoscz.youtube.R.id.video_like_count);
+            mDislikeCountText = (TextView) v.findViewById(com.akoscz.youtube.R.id.video_dislike_count);
         }
     }
 
@@ -72,7 +72,7 @@ public class PlaylistCardAdapter extends RecyclerView.Adapter<PlaylistCardAdapte
     @Override
     public PlaylistCardAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // inflate a card layout
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.youtube_video_card, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(com.akoscz.youtube.R.layout.youtube_video_card, parent, false);
         // populate the viewholder
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -83,7 +83,7 @@ public class PlaylistCardAdapter extends RecyclerView.Adapter<PlaylistCardAdapte
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final PlaylistItem item = mPlaylist.getItem(position);
         holder.mTitleText.setText(item.title);
-        holder.mDescriptionText.setText(item.description);
+//        holder.mDescriptionText.setText(item.description);
 
         // load the video thumbnail image
         Picasso.with(holder.mContext)
@@ -94,7 +94,7 @@ public class PlaylistCardAdapter extends RecyclerView.Adapter<PlaylistCardAdapte
         holder.mThumbnailImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + item.videoId)));
+                holder.mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.example.akoscz.com/watch?v=" + item.videoId)));
             }
         });
 
@@ -105,7 +105,7 @@ public class PlaylistCardAdapter extends RecyclerView.Adapter<PlaylistCardAdapte
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Watch \"" + item.title + "\" on YouTube");
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "http://www.youtube.com/watch?v=" + item.videoId);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "http://www.example.akoscz.com/watch?v=" + item.videoId);
                 sendIntent.setType("text/plain");
                 holder.mContext.startActivity(sendIntent);
             }

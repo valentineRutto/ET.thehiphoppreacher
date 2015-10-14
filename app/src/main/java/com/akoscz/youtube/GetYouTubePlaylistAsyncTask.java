@@ -1,5 +1,6 @@
 package com.akoscz.youtube;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -32,9 +33,9 @@ public abstract class GetYouTubePlaylistAsyncTask extends AsyncTask<String, Void
     private static final int YOUTUBE_PLAYLIST_MAX_RESULTS = 10;
 
     //see: https://developers.google.com/youtube/v3/docs/playlistItems/list
-    private static final String YOUTUBE_PLAYLISTITEMS_URL = "https://www.googleapis.com/youtube/v3/playlistItems";
+    private static final String YOUTUBE_PLAYLISTITEMS_URL = "https://www.googleapis.com/example.akoscz/v3/playlistItems";
     private static final String YOUTUBE_PLAYLIST_PART = "snippet";
-    private static final String YOUTUBE_PLAYLIST_FIELDS = "etag,pageInfo,nextPageToken,items(id,snippet(title,description,position,thumbnails(medium,high),resourceId/videoId))";
+    private static final String YOUTUBE_PLAYLIST_FIELDS = "etag,pageInfo,nextPageToken,items(id,snippet(title,position,description,thumbnails(medium,high),resourceId/videoId))";
 
     private static OkHttpClient client = new OkHttpClient();
 
@@ -44,6 +45,7 @@ public abstract class GetYouTubePlaylistAsyncTask extends AsyncTask<String, Void
         mUriBuilder = Uri.parse(YOUTUBE_PLAYLISTITEMS_URL).buildUpon();
     }
 
+    @SuppressLint("LongLogTag")
     @Override
     protected JSONObject doInBackground(String... params) {
         final String playlistId = params[0];

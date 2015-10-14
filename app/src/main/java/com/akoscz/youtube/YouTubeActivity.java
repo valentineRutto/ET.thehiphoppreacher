@@ -21,12 +21,12 @@ import android.view.MenuItem;
  * limitations under the License.
  */
 public class YouTubeActivity extends ActionBarActivity {
-    private static final String YOUTUBE_PLAYLIST = "PLWz5rJ2EKKc_XOgcRukSoKKjewFJZrKV0";
+    private static final String YOUTUBE_PLAYLIST = "PLty8xV3EJYSe5Jqym-_rZtsFvNzXi9AB7";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.youtube_activity);
+        setContentView(com.akoscz.youtube.R.layout.youtube_activity);
 
         if (ApiKey.YOUTUBE_API_KEY.startsWith("YOUR_API_KEY")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this)
@@ -44,7 +44,7 @@ public class YouTubeActivity extends ActionBarActivity {
 
         } else if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
+                    .add(com.akoscz.youtube.R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
                     .commit();
         }
     }
@@ -53,7 +53,7 @@ public class YouTubeActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.you_tube, menu);
+        getMenuInflater().inflate(com.akoscz.youtube.R.menu.you_tube, menu);
         return true;
     }
 
@@ -63,14 +63,14 @@ public class YouTubeActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_listview) {
+        if (id == com.akoscz.youtube.R.id.action_listview) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, YouTubeListViewFragment.newInstance(YOUTUBE_PLAYLIST))
+                    .replace(com.akoscz.youtube.R.id.container, YouTubeListViewFragment.newInstance(YOUTUBE_PLAYLIST))
                     .commit();
             return true;
-        }else if (id == R.id.action_recyclerview) {
+        }else if (id == com.akoscz.youtube.R.id.action_recyclerview) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
+                    .replace(com.akoscz.youtube.R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
                     .commit();
             return true;
         }

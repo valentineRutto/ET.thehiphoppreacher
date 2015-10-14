@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.appcompat.BuildConfig;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,9 +85,9 @@ public class YouTubeListViewFragment extends Fragment {
 
         Picasso.with(getActivity()).setIndicatorsEnabled(BuildConfig.DEBUG);
 
-        View rootView = inflater.inflate(R.layout.youtube_list_view_fragment, container, false);
+        View rootView = inflater.inflate(com.akoscz.youtube.R.layout.youtube_list_view_fragment, container, false);
 
-        mListView = (ListView) rootView.findViewById(R.id.youtube_listview);
+        mListView = (ListView) rootView.findViewById(com.akoscz.youtube.R.id.youtube_listview);
 
         // restore the playlist after an orientation change
         if (savedInstanceState != null) {
@@ -208,7 +209,7 @@ public class YouTubeListViewFragment extends Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup viewGroup) {
             if (mIsLoading && position == (getCount() - 1)) {
-                return mInflater.inflate(R.layout.youtube_video_list_item_loading, null, false);
+                return mInflater.inflate(com.akoscz.youtube.R.layout.youtube_video_list_item_loading, null, false);
             }
 
             ViewHolder viewHolder;
@@ -216,16 +217,16 @@ public class YouTubeListViewFragment extends Fragment {
             if (convertView == null || convertView.getTag() == null) {
 
                 viewHolder = new ViewHolder();
-                convertView = mInflater.inflate(R.layout.youtube_video_list_item, null, false);
-                viewHolder.title = (TextView) convertView.findViewById(R.id.video_title);
-                viewHolder.description = (TextView) convertView.findViewById(R.id.video_description);
-                viewHolder.thumbnail = (ImageView) convertView.findViewById(R.id.video_thumbnail);
-                viewHolder.share = (ImageView) convertView.findViewById(R.id.video_share);
-                viewHolder.shareText = (TextView) convertView.findViewById(R.id.video_share_text);
-                viewHolder.duration = (TextView) convertView.findViewById(R.id.video_dutation_text);
-                viewHolder.viewCount= (TextView) convertView.findViewById(R.id.video_view_count);
-                viewHolder.likeCount = (TextView) convertView.findViewById(R.id.video_like_count);
-                viewHolder.dislikeCount = (TextView) convertView.findViewById(R.id.video_dislike_count);
+                convertView = mInflater.inflate(com.akoscz.youtube.R.layout.youtube_video_list_item, null, false);
+                viewHolder.title = (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_title);
+                viewHolder.description = (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_description);
+                viewHolder.thumbnail = (ImageView) convertView.findViewById(com.akoscz.youtube.R.id.video_thumbnail);
+                viewHolder.share = (ImageView) convertView.findViewById(com.akoscz.youtube.R.id.video_share);
+                viewHolder.shareText = (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_share_text);
+                viewHolder.duration = (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_dutation_text);
+                viewHolder.viewCount= (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_view_count);
+                viewHolder.likeCount = (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_like_count);
+                viewHolder.dislikeCount = (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_dislike_count);
                 convertView.setTag(viewHolder);
             }
 
@@ -244,7 +245,7 @@ public class YouTubeListViewFragment extends Fragment {
             viewHolder.thumbnail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + item.videoId)));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.example.akoscz.com/watch?v=" + item.videoId)));
 
                 }
             });
@@ -256,7 +257,7 @@ public class YouTubeListViewFragment extends Fragment {
                     Intent sendIntent = new Intent();
                     sendIntent.setAction(Intent.ACTION_SEND);
                     sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Watch \"" + item.title + "\" on YouTube");
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, "http://www.youtube.com/watch?v=" + item.videoId);
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, "http://www.example.akoscz.com/watch?v=" + item.videoId);
                     sendIntent.setType("text/plain");
                     startActivity(sendIntent);
                 }
