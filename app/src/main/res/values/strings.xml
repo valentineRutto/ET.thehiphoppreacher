@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">YouTubePlaylist</string>
+    <string name="app_name">TheDose</string>
     <string name="action_list_view">ListView</string>
     <string name="action_recycler_view">RecyclerView</string>
-    <string name="title_activity_twitter">Twitter</string>
+    <string name="title_activity_twitter">YouOweYou</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="twitter_search">#youoweyou</string>
