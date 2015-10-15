@@ -4,10 +4,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 /**
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +28,7 @@ import android.view.MenuItem;
  */
 public class YouTubeActivity extends ActionBarActivity {
     private DrawerLayout drawerLayout;
-
+Toolbar toolbar;
     private NavigationView navigationView;
 
     private static final String YOUTUBE_PLAYLIST = "PLty8xV3EJYSe5Jqym-_rZtsFvNzXi9AB7";
@@ -35,7 +39,26 @@ public class YouTubeActivity extends ActionBarActivity {
 
         setContentView(com.akoscz.youtube.R.layout.youtube_activity);
 
-        if (ApiKey.YOUTUBE_API_KEY.startsWith("YOUR_API_KEY")) {
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        navigationView = (NavigationView) findViewById(R.id.nav_view) ;
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                drawerLayout.closeDrawers();
+                return false;
+            }
+
+        });
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout, toolbar,R.string.app_name,
+                R.string.app_name);
+
+        drawerLayout.setDrawerListener(mDrawerToggle);
+
+        mDrawerToggle.syncState();
+
+                    if (ApiKey.YOUTUBE_API_KEY.startsWith("YOUR_API_KEY")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .setMessage("Edit ApiKey.java and replace \"YOUR_API_KEY\" with your Applications Browser API Key")
                         .setTitle("Missing API Key")
