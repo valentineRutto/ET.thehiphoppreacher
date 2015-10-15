@@ -10,4 +10,22 @@
     <string name="twitter_search">#youoweyou</string>
     <string name="action_settings">Settings</string>
 
+
+    <string-array name="navDrawerItems">
+        <item>Twitter-Qoutes</item>
+        <item>Share</item>
+        <item>Help</item>
+    </string-array>
+
+    <string-array name="navDrawerIcons">
+
+        <item>@drawable/ic_favorite</item>
+        <item>@drawable/ic_favorite</item>
+        <item>@drawable/ic_share</item>
+        <item>@drawable/ic_share</item>
+
+
+    </string-array>
+
+
 </resources>
