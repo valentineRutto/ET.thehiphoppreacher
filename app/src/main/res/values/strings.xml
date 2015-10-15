@@ -2,8 +2,8 @@
 <resources>
 
     <string name="app_name">TheDose</string>
-    <string name="action_list_view">ListView</string>
-    <string name="action_recycler_view">RecyclerView</string>
+    <string name="action_list_view">Show Less</string>
+    <string name="action_recycler_view">Show More</string>
     <string name="title_activity_twitter">YouOweYou</string>
 
     <string name="hello_world">Hello world!</string>

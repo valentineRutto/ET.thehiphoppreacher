@@ -245,7 +245,7 @@ public class YouTubeListViewFragment extends Fragment {
             viewHolder.thumbnail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.example.akoscz.com/watch?v=" + item.videoId)));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + item.videoId)));
 
                 }
             });
@@ -257,7 +257,7 @@ public class YouTubeListViewFragment extends Fragment {
                     Intent sendIntent = new Intent();
                     sendIntent.setAction(Intent.ACTION_SEND);
                     sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Watch \"" + item.title + "\" on YouTube");
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, "http://www.example.akoscz.com/watch?v=" + item.videoId);
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, "http://www.youtube.com/watch?v=" + item.videoId);
                     sendIntent.setType("text/plain");
                     startActivity(sendIntent);
                 }
