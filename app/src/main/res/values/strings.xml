@@ -11,7 +11,7 @@
     <string name="action_settings">Settings</string>
 
 
-    <string-array name="navDrawerItems">
+    <string-array name="items">
         <item>Twitter-Qoutes</item>
         <item>Share</item>
         <item>Help</item>

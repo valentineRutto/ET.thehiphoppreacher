@@ -1,5 +1,6 @@
 package com.valentine.youtube;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -8,6 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.akoscz.youtube.R;
 
@@ -25,16 +32,50 @@ import com.akoscz.youtube.R;
  * limitations under the License.
  */
 public class YouTubeActivity extends AppCompatActivity {
+ private ActionBarDrawerToggle actionBarDrawerToggle;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private static final String YOUTUBE_PLAYLIST = "PLty8xV3EJYSe5Jqym-_rZtsFvNzXi9AB7";
+
+    private String[] drawerListViewItems;
+    private ListView drawerListView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.youtube_activity);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
+                    .commit();
+        }
+        // get list items from strings.xml
+        drawerListViewItems = getResources().getStringArray(R.array.items);
+
+        // get ListView defined in activity_main.xml
+        drawerListView = (ListView) findViewById(R.id.drawer_list);
+
+        // Set the adapter for the list view
+        drawerListView.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_item_layout,R.id.text1, drawerListViewItems));
+        // App Icon
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+     actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,                  /* host Activity */
+                drawerLayout,         /* DrawerLayout object */
+                toolbar,  /* nav drawer icon to replace 'Up' caret */
+                R.string.app_name,  /* "open drawer" description */
+                R.string.app_name  /* "close drawer" description */
+        );
+        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+//
+actionBarDrawerToggle.syncState();
+//
+
+// Set actionBarDrawerToggle as the DrawerListener
+        drawerLayout.setDrawerListener(actionBarDrawerToggle);
         navigationView = (NavigationView) findViewById(R.id.nav_view) ;
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -45,21 +86,47 @@ public class YouTubeActivity extends AppCompatActivity {
             }
 
         });
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.app_name,
-                R.string.app_name);
-
-        drawerLayout.setDrawerListener(mDrawerToggle);
-
-        mDrawerToggle.syncState();
-
-    if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
-                    .commit();
-        }
-
     }
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        actionBarDrawerToggle.onConfigurationChanged(newConfig);
+    }
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            Toast.makeText(YouTubeActivity.this, ((TextView) view).getText().toString(), Toast.LENGTH_LONG).show();
+            drawerLayout.closeDrawer(drawerListView);
+
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns true
+        // then it has handled the app icon touch event
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+//        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.app_name,
+//                R.string.app_name);
+//
+//        drawerLayout.setDrawerListener(mDrawerToggle);
+//
+//        mDrawerToggle.syncState();
+//
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -69,12 +136,12 @@ public class YouTubeActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+//        int id = item.getItemId();
 //        if (id == com.akoscz.youtube.R.id.action_listview) {
 //            getSupportFragmentManager().beginTransaction()
 //                    .replace(com.akoscz.youtube.R.id.container, YouTubeListViewFragment.newInstance(YOUTUBE_PLAYLIST))
@@ -86,6 +153,6 @@ public class YouTubeActivity extends AppCompatActivity {
 //                    .commit();
 //            return true;
 //        }
-        return super.onOptionsItemSelected(item);
-    }
+//        return super.onOptionsItemSelected(item);
+//    }
 }
