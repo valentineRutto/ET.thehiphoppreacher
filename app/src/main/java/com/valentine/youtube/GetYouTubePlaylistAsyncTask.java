@@ -1,4 +1,4 @@
-package com.akoscz.youtube;
+package com.valentine.youtube;
 
 import android.annotation.SuppressLint;
 import android.net.Uri;

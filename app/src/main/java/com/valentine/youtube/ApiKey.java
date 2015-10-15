@@ -1,4 +1,4 @@
-package com.akoscz.youtube;
+package com.valentine.youtube;
 
 /**
  * Licensed under the Apache License, Version 2.0 (the "License");

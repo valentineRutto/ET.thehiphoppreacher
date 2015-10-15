@@ -1,5 +1,5 @@
 
-package com.akoscz.youtube.model;
+package com.valentine.youtube.model;
 
 import org.json.JSONArray;
 import org.json.JSONException;

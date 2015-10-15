@@ -1,14 +1,15 @@
-package com.akoscz.youtube;
+package com.valentine.youtube;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
+
+import com.akoscz.youtube.R;
 
 /**
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,12 +28,10 @@ public class YouTubeActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private static final String YOUTUBE_PLAYLIST = "PLty8xV3EJYSe5Jqym-_rZtsFvNzXi9AB7";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(com.akoscz.youtube.R.layout.youtube_activity);
+        setContentView(R.layout.youtube_activity);
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -54,41 +53,28 @@ public class YouTubeActivity extends AppCompatActivity {
 
         mDrawerToggle.syncState();
 
-                    if (ApiKey.YOUTUBE_API_KEY.startsWith("YOUR_API_KEY")) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setMessage("Edit ApiKey.java and replace \"YOUR_API_KEY\" with your Applications Browser API Key")
-                        .setTitle("Missing API Key")
-                        .setNeutralButton("Ok, I got it!", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                finish();
-                            }
-                        });
-
-            AlertDialog dialog = builder.create();
-            dialog.show();
-
-        } else if (savedInstanceState == null) {
+    if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(com.akoscz.youtube.R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
+                    .add(R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
                     .commit();
         }
+
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.you_tube, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.you_tube, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
 //        if (id == com.akoscz.youtube.R.id.action_listview) {
 //            getSupportFragmentManager().beginTransaction()
 //                    .replace(com.akoscz.youtube.R.id.container, YouTubeListViewFragment.newInstance(YOUTUBE_PLAYLIST))
@@ -100,6 +86,6 @@ public class YouTubeActivity extends AppCompatActivity {
 //                    .commit();
 //            return true;
 //        }
-//        return super.onOptionsItemSelected(item);
-//    }
+        return super.onOptionsItemSelected(item);
+    }
 }

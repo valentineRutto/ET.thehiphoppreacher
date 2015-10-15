@@ -1,4 +1,4 @@
-package com.akoscz.youtube;
+package com.valentine.youtube;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.akoscz.youtube.R;
 import com.squareup.picasso.Picasso;
-import com.akoscz.youtube.model.Playlist;
-import com.akoscz.youtube.model.PlaylistItem;
+import com.valentine.youtube.model.Playlist;
+import com.valentine.youtube.model.PlaylistItem;
 
 import java.text.DecimalFormat;
 
@@ -52,14 +53,14 @@ public class PlaylistCardAdapter extends RecyclerView.Adapter<PlaylistCardAdapte
             super(v);
             mContext = v.getContext();
             mTitleText = (TextView) v.findViewById(R.id.video_title);
-            mDescriptionText = (TextView) v.findViewById(com.akoscz.youtube.R.id.video_description);
-            mThumbnailImage = (ImageView) v.findViewById(com.akoscz.youtube.R.id.video_thumbnail);
-            mShareIcon = (ImageView) v.findViewById(com.akoscz.youtube.R.id.video_share);
-            mShareText = (TextView) v.findViewById(com.akoscz.youtube.R.id.video_share_text);
-            mDurationText = (TextView) v.findViewById(com.akoscz.youtube.R.id.video_dutation_text);
-            mViewCountText= (TextView) v.findViewById(com.akoscz.youtube.R.id.video_view_count);
-            mLikeCountText = (TextView) v.findViewById(com.akoscz.youtube.R.id.video_like_count);
-            mDislikeCountText = (TextView) v.findViewById(com.akoscz.youtube.R.id.video_dislike_count);
+            mDescriptionText = (TextView) v.findViewById(R.id.video_description);
+            mThumbnailImage = (ImageView) v.findViewById(R.id.video_thumbnail);
+            mShareIcon = (ImageView) v.findViewById(R.id.video_share);
+            mShareText = (TextView) v.findViewById(R.id.video_share_text);
+            mDurationText = (TextView) v.findViewById(R.id.video_dutation_text);
+            mViewCountText= (TextView) v.findViewById(R.id.video_view_count);
+            mLikeCountText = (TextView) v.findViewById(R.id.video_like_count);
+            mDislikeCountText = (TextView) v.findViewById(R.id.video_dislike_count);
         }
     }
 
@@ -72,7 +73,7 @@ public class PlaylistCardAdapter extends RecyclerView.Adapter<PlaylistCardAdapte
     @Override
     public PlaylistCardAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // inflate a card layout
-        View v = LayoutInflater.from(parent.getContext()).inflate(com.akoscz.youtube.R.layout.youtube_video_card, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.youtube_video_card, parent, false);
         // populate the viewholder
         ViewHolder vh = new ViewHolder(v);
         return vh;

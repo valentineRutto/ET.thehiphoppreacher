@@ -42,10 +42,10 @@ dependencies {
     //noinspection GradleCompatible
     compile 'com.android.support:recyclerview-v7:21.0.3'
     //noinspection GradleCompatible
-    compile 'com.android.support:support-v4:21.0.3'
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:appcompat-v7:22.0.3'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.google.code.gson:gson:2.3.1'
     compile('com.twitter.sdk.android:twitter:1.8.0@aar') {
         transitive = true;

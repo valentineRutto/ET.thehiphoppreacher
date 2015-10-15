@@ -15,14 +15,14 @@
     <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".MyApp"
+        android:name="com.valentine.youtube.MyApp"
 
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".YouTubeActivity"
+            android:name="com.valentine.youtube.YouTubeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Twitter"
+            android:name="com.valentine.youtube.Twitter"
             android:label="@string/title_activity_twitter" >
         </activity>
         <meta-data

@@ -1,4 +1,4 @@
-package com.akoscz.youtube.model;
+package com.valentine.youtube.model;
 
 import org.json.JSONException;
 import org.json.JSONObject;

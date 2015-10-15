@@ -1,4 +1,4 @@
-package com.akoscz.youtube;
+package com.valentine.youtube;
 
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 

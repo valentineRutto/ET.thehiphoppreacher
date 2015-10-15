@@ -1,4 +1,4 @@
-package com.akoscz.youtube;
+package com.valentine.youtube;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -13,11 +13,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.akoscz.youtube.model.Playlist;
-import com.akoscz.youtube.model.PlaylistItem;
-import com.akoscz.youtube.model.Video;
+import com.akoscz.youtube.R;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
+import com.valentine.youtube.model.Playlist;
+import com.valentine.youtube.model.PlaylistItem;
+import com.valentine.youtube.model.Video;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -85,9 +86,9 @@ public class YouTubeListViewFragment extends Fragment {
 
         Picasso.with(getActivity()).setIndicatorsEnabled(BuildConfig.DEBUG);
 
-        View rootView = inflater.inflate(com.akoscz.youtube.R.layout.youtube_list_view_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.youtube_list_view_fragment, container, false);
 
-        mListView = (ListView) rootView.findViewById(com.akoscz.youtube.R.id.youtube_listview);
+        mListView = (ListView) rootView.findViewById(R.id.youtube_listview);
 
         // restore the playlist after an orientation change
         if (savedInstanceState != null) {
@@ -209,7 +210,7 @@ public class YouTubeListViewFragment extends Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup viewGroup) {
             if (mIsLoading && position == (getCount() - 1)) {
-                return mInflater.inflate(com.akoscz.youtube.R.layout.youtube_video_list_item_loading, null, false);
+                return mInflater.inflate(R.layout.youtube_video_list_item_loading, null, false);
             }
 
             ViewHolder viewHolder;
@@ -217,16 +218,16 @@ public class YouTubeListViewFragment extends Fragment {
             if (convertView == null || convertView.getTag() == null) {
 
                 viewHolder = new ViewHolder();
-                convertView = mInflater.inflate(com.akoscz.youtube.R.layout.youtube_video_list_item, null, false);
-                viewHolder.title = (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_title);
-                viewHolder.description = (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_description);
-                viewHolder.thumbnail = (ImageView) convertView.findViewById(com.akoscz.youtube.R.id.video_thumbnail);
-                viewHolder.share = (ImageView) convertView.findViewById(com.akoscz.youtube.R.id.video_share);
-                viewHolder.shareText = (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_share_text);
-                viewHolder.duration = (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_dutation_text);
-                viewHolder.viewCount= (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_view_count);
-                viewHolder.likeCount = (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_like_count);
-                viewHolder.dislikeCount = (TextView) convertView.findViewById(com.akoscz.youtube.R.id.video_dislike_count);
+                convertView = mInflater.inflate(R.layout.youtube_video_list_item, null, false);
+                viewHolder.title = (TextView) convertView.findViewById(R.id.video_title);
+                viewHolder.description = (TextView) convertView.findViewById(R.id.video_description);
+                viewHolder.thumbnail = (ImageView) convertView.findViewById(R.id.video_thumbnail);
+                viewHolder.share = (ImageView) convertView.findViewById(R.id.video_share);
+                viewHolder.shareText = (TextView) convertView.findViewById(R.id.video_share_text);
+                viewHolder.duration = (TextView) convertView.findViewById(R.id.video_dutation_text);
+                viewHolder.viewCount= (TextView) convertView.findViewById(R.id.video_view_count);
+                viewHolder.likeCount = (TextView) convertView.findViewById(R.id.video_like_count);
+                viewHolder.dislikeCount = (TextView) convertView.findViewById(R.id.video_dislike_count);
                 convertView.setTag(viewHolder);
             }
 

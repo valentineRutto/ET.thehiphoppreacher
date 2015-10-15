@@ -1,4 +1,4 @@
-package com.akoscz.youtube;
+package com.valentine.youtube;
 
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -11,11 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.akoscz.youtube.model.Playlist;
-import com.akoscz.youtube.model.PlaylistItem;
-import com.akoscz.youtube.model.Video;
+import com.akoscz.youtube.R;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
+import com.valentine.youtube.model.Playlist;
+import com.valentine.youtube.model.PlaylistItem;
+import com.valentine.youtube.model.Video;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,17 +74,17 @@ public class YouTubeRecyclerViewFragment extends Fragment {
         Picasso.with(getActivity()).setIndicatorsEnabled(BuildConfig.DEBUG);
 
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(com.akoscz.youtube.R.layout.youtube_recycler_view_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.youtube_recycler_view_fragment, container, false);
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(com.akoscz.youtube.R.id.youtube_recycler_view);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.youtube_recycler_view);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
 
         Resources resources = getResources();
-        if (resources.getBoolean(com.akoscz.youtube.R.bool.isTablet)) {
+        if (resources.getBoolean(R.bool.isTablet)) {
             // use a staggered grid layout if we're on a large screen device
-            mLayoutManager = new StaggeredGridLayoutManager(resources.getInteger(com.akoscz.youtube.R.integer.columns),
+            mLayoutManager = new StaggeredGridLayoutManager(resources.getInteger(R.integer.columns),
                     StaggeredGridLayoutManager.VERTICAL);
         } else {
             // use a linear layout on phone devices
