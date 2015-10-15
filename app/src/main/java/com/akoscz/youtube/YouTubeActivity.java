@@ -3,6 +3,8 @@ package com.akoscz.youtube;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +23,9 @@ import android.view.MenuItem;
  * limitations under the License.
  */
 public class YouTubeActivity extends ActionBarActivity {
+    private DrawerLayout drawerLayout;
 
+    private NavigationView navigationView;
 
     private static final String YOUTUBE_PLAYLIST = "PLty8xV3EJYSe5Jqym-_rZtsFvNzXi9AB7";
 
