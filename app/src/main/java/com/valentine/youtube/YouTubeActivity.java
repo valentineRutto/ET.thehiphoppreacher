@@ -1,10 +1,9 @@
 package com.valentine.youtube;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.akoscz.youtube.R;
+import com.melnykov.fab.FloatingActionButton;
 
 /**
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,13 +48,16 @@ public class YouTubeActivity extends AppCompatActivity {
                     .add(R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
                     .commit();
 
-            FloatingActionButton fab=(FloatingActionButton)findViewById(R.id.fab);
-            fab.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    Snackbar.make(v, "YouOweYou", Snackbar.LENGTH_LONG).show();
-                }  });
+
         }
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(YouTubeActivity.this, Twitter.class));
+            }
+        });
         // get list items from strings.xml
         drawerListViewItems = getResources().getStringArray(R.array.items);
 

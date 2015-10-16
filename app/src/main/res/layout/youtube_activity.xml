@@ -1,8 +1,8 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
@@ -38,7 +38,19 @@ android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.valentine.youtube.YouTubeActivity"
-        tools:ignore="MergeRootFrame" />
+        tools:ignore="MergeRootFrame" >
+
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_add"
+            fab:fab_colorNormal="@color/primary_dark"
+            fab:fab_colorPressed="@color/accent"
+            fab:fab_colorRipple="@color/white" />
+    </FrameLayout>
     <ListView
         android:id="@+id/drawer_list"
         android:layout_width="240dp"
@@ -48,7 +60,6 @@ android:fitsSystemWindows="true"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp" />
-
 <android.support.design.widget.NavigationView
 
     android:id="@+id/nav_view"
@@ -69,20 +80,6 @@ android:fitsSystemWindows="true"
 
     app:itemBackground="?attr/selectableItemBackground"/>
 
-    <android.support.design.widget.FloatingActionButton
 
-        android:id="@+id/fab"
-
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-
-        android:layout_marginBottom="16dp"
-        android:background="@color/primary"
-        android:layout_marginRight="16dp"
-        android:layout_above="@+id/bottom_toolbar"
-        android:layout_gravity="right|bottom"
-        android:tint="#ffffff"
-        android:src="@drawable/ic_add"/>
 </android.support.v4.widget.DrawerLayout>
     </LinearLayout>
