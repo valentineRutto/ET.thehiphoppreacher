@@ -10,12 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.akoscz.youtube.R;
-import com.melnykov.fab.FloatingActionButton;
 
 /**
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,16 +46,9 @@ public class YouTubeActivity extends AppCompatActivity {
                     .add(R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
                     .commit();
 
-
         }
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(YouTubeActivity.this, Twitter.class));
-            }
-        });
+
         // get list items from strings.xml
         drawerListViewItems = getResources().getStringArray(R.array.items);
 
@@ -89,8 +80,6 @@ public class YouTubeActivity extends AppCompatActivity {
 
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-
                 drawerLayout.closeDrawers();
                 return false;
             }
@@ -149,9 +138,8 @@ public class YouTubeActivity extends AppCompatActivity {
 //         as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == com.akoscz.youtube.R.id.action_listview) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(com.akoscz.youtube.R.id.container, YouTubeListViewFragment.newInstance(YOUTUBE_PLAYLIST))
-                    .commit();
+           Intent intent=new Intent(YouTubeActivity.this,Twitter.class);
+            startActivity(intent);
             return true;
         }else if (id == com.akoscz.youtube.R.id.action_recyclerview) {
             getSupportFragmentManager().beginTransaction()

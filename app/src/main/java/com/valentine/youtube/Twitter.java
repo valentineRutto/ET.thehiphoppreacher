@@ -1,12 +1,15 @@
 package com.valentine.youtube;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import com.akoscz.youtube.R;
+import com.github.clans.fab.FloatingActionButton;
 import com.twitter.sdk.android.tweetui.SearchTimeline;
 import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 
@@ -20,6 +23,14 @@ public class Twitter extends ActionBarActivity {
         SEARCH_QUERY = getResources().getString(R.string.twitter_search);
         setUpTimeline();
 
+//        ListView listView = (ListView) findViewById(android.R.id.list);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Twitter.this, YouTubeActivity.class));
+            }
+        });
 
     }
     private void setUpTimeline() {
