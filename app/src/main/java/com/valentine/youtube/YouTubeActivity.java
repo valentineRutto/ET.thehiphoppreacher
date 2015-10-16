@@ -9,12 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.akoscz.youtube.R;
 
@@ -70,17 +66,18 @@ public class YouTubeActivity extends AppCompatActivity {
                 R.string.app_name  /* "close drawer" description */
         );
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
-//
-actionBarDrawerToggle.syncState();
-//
+       actionBarDrawerToggle.syncState();
+
 
 // Set actionBarDrawerToggle as the DrawerListener
-        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+//        drawerLayout.setDrawerListener(actionBarDrawerToggle);
         navigationView = (NavigationView) findViewById(R.id.nav_view) ;
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+
                 drawerLayout.closeDrawers();
                 return false;
             }
@@ -92,25 +89,24 @@ actionBarDrawerToggle.syncState();
         super.onConfigurationChanged(newConfig);
         actionBarDrawerToggle.onConfigurationChanged(newConfig);
     }
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView parent, View view, int position, long id) {
-            Toast.makeText(YouTubeActivity.this, ((TextView) view).getText().toString(), Toast.LENGTH_LONG).show();
-            drawerLayout.closeDrawer(drawerListView);
-
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        // call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns true
-        // then it has handled the app icon touch event
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+//        @Override
+//        public void onItemClick(AdapterView parent, View view, int position, long id) {
+//            Toast.makeText(YouTubeActivity.this, ((TextView) view).getText(), Toast.LENGTH_LONG).show();
+//            drawerLayout.closeDrawer(drawerListView);
+//        }
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        // call ActionBarDrawerToggle.onOptionsItemSelected(), if it returns true
+//        // then it has handled the app icon touch event
+//        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
 //        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
@@ -125,9 +121,6 @@ actionBarDrawerToggle.syncState();
 //        mDrawerToggle.syncState();
 //
 
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -139,8 +132,8 @@ actionBarDrawerToggle.syncState();
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+////         automatically handle clicks on the Home/Up button, so long
+////         as you specify a parent activity in AndroidManifest.xml.
 //        int id = item.getItemId();
 //        if (id == com.akoscz.youtube.R.id.action_listview) {
 //            getSupportFragmentManager().beginTransaction()

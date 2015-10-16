@@ -18,13 +18,10 @@
     </string-array>
 
     <string-array name="navDrawerIcons">
-
         <item>@drawable/ic_favorite</item>
         <item>@drawable/ic_favorite</item>
         <item>@drawable/ic_share</item>
         <item>@drawable/ic_share</item>
-
-
     </string-array>
 
 
