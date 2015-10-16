@@ -2,13 +2,16 @@ package com.valentine.youtube;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -44,6 +47,13 @@ public class YouTubeActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
                     .commit();
+
+            FloatingActionButton fab=(FloatingActionButton)findViewById(R.id.fab);
+            fab.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Snackbar.make(v, "YouOweYou", Snackbar.LENGTH_LONG).show();
+                }  });
         }
         // get list items from strings.xml
         drawerListViewItems = getResources().getStringArray(R.array.items);
@@ -129,23 +139,23 @@ public class YouTubeActivity extends AppCompatActivity {
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-////         automatically handle clicks on the Home/Up button, so long
-////         as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//        if (id == com.akoscz.youtube.R.id.action_listview) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .replace(com.akoscz.youtube.R.id.container, YouTubeListViewFragment.newInstance(YOUTUBE_PLAYLIST))
-//                    .commit();
-//            return true;
-//        }else if (id == com.akoscz.youtube.R.id.action_recyclerview) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .replace(com.akoscz.youtube.R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
-//                    .commit();
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+//         automatically handle clicks on the Home/Up button, so long
+//         as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == com.akoscz.youtube.R.id.action_listview) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(com.akoscz.youtube.R.id.container, YouTubeListViewFragment.newInstance(YOUTUBE_PLAYLIST))
+                    .commit();
+            return true;
+        }else if (id == com.akoscz.youtube.R.id.action_recyclerview) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(com.akoscz.youtube.R.id.container, YouTubeRecyclerViewFragment.newInstance(YOUTUBE_PLAYLIST))
+                    .commit();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
